@@ -5,6 +5,8 @@ BuildDeck buildDeck = new BuildDeck();
 buildDeck.CreateDeck();
 //print the deck
 buildDeck.PrintDeck();
+
+int DealCount = 52;
 // Display options for user
 while (true)
 {
@@ -21,10 +23,19 @@ while (true)
                 buildDeck.ShuffelCards(buildDeck.cards);
                 break;
             case 2:
-                Card c = new Card();
-                c = buildDeck.DealOneCard();
-                Console.WriteLine("\n"+c.Suite + " " + c.value + " " + c.SpecialCard);
-                break;
+                if (DealCount > 0)
+                {
+                    DealCount--;
+                    Card c = new Card();
+                    c = buildDeck.DealOneCard();
+                    Console.WriteLine("\n" + c.Suite + " " + c.value + " " + c.SpecialCard);
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("--------------------------SHOW DOWN--------- There are no more cads left in the deck-------------------------");
+                    break;
+                }
 
             default:
                 Console.WriteLine("Invalid Input\n");
